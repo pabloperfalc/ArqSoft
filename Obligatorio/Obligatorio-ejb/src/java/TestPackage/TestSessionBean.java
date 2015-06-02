@@ -16,6 +16,6 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class TestSessionBean {
 
-    // Add business logic below. (Right-click in editor and choose
+    // Add business logic below. (Right-click iniuiuiuouiououoiuoiuo editor and choose
     // "Insert Code > Add Business Method")
 }
