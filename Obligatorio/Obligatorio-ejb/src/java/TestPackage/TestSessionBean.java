@@ -18,4 +18,9 @@ public class TestSessionBean {
 
     // asdqweasdqweAdd business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    public void HelloWorld(){
+    
+        System.out.println("Hello World!!!! yeah");
+    }
 }
