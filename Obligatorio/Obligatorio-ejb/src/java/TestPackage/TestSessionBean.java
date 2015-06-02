@@ -27,5 +27,6 @@ public class TestSessionBean {
     public void NewOne(){
     
         System.out.println("This is the new one, HELLO WORLDDDDD");
+        System.out.println("Second change");
     }
 }
