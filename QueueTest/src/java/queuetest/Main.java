@@ -5,6 +5,8 @@
  */
 package queuetest;
 
+import DTOs.QueueCommand;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -13,6 +15,7 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
@@ -32,14 +35,19 @@ public class Main {
      */
     public static void main(String[] args) throws JMSException {
         // TODO code application logic here
-        sendJMSMessageToCommandsQueue("test");
+        QueueCommand command = new QueueCommand();
+        command.setCommandId(123);
+        command.setRoomId(567);
+        sendJMSMessageToCommandsQueue(command);
     }
 
     private static Message createJMSMessageForjmsCommandsQueue(Session session, Object messageData) throws JMSException {
         // TODO create and populate message to send
-        TextMessage tm = session.createTextMessage();
-        tm.setText(messageData.toString());
-        return tm;
+        ObjectMessage om =  session.createObjectMessage();
+        om.setObject((Serializable) messageData);
+        //TextMessage tm = session.createTextMessage();
+        //tm.setText(messageData.toString());
+        return om;
     }
 
     private static void sendJMSMessageToCommandsQueue(Object messageData) throws JMSException {
