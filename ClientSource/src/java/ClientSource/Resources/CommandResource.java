@@ -5,7 +5,8 @@
  */
 package ClientSource.Resources;
 
-import Workers.sb.CommandBean;
+import Entities.Command;
+import Workers.sb.ICommandBeanRemote;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -28,28 +29,30 @@ public class CommandResource {
     @Context
     private UriInfo context;
 
-    //@EJB
-    //private CommandBean commandBean;
+    @EJB
+    private ICommandBeanRemote commandBean;
     
     //@EJB
     //private CommandMapper commandMapper;
     
     
-    /*@GET
+    @GET
     @Produces("application/json")
-    public List<AutoDTO> get() {
-        List<Command> autos = this.commandBean.obtenerAutos();
-        List<AutoDTO> dtos = new LinkedList<AutoDTO>();
-        for (Command auto : autos) {
+    public List<Command> get(int room) {
+        List<Command> commands = this.commandBean.getCommandList(room);
+       /*ACA SE TENDRIAN USAR DTOS*/
+        List<Command> dtos = new LinkedList<Command>();
+       /* for (Command comm : commands) {
             dtos.add(this.commandMapper.toDTO(auto));
-        }
+        }*/
         
         return dtos;
-    }*/
-    @GET
+    }
+    /*@GET
     @Produces("application/json")
     public String get(){
         
         return "ANDUVOOOOO";
+    }*/
     }
-    }
+    
