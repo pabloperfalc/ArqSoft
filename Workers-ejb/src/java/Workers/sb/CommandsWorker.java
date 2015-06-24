@@ -6,6 +6,10 @@
 package Workers.sb;
 
 import DTOs.QueueCommand;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
@@ -36,8 +40,18 @@ public class CommandsWorker implements MessageListener {
             
             if (objMsg.isBodyAssignableTo(QueueCommand.class)) {
 
-                    int command = ((QueueCommand)objMsg.getObject()).getRoomId();
-                    System.out.println(command);
+                    QueueCommand command = ((QueueCommand)objMsg.getObject());
+                    try{
+                        Socket socket = new Socket("localhost", 5555);
+                        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                        out.println(command.getCommandId());
+                      } catch (UnknownHostException e) {
+                        System.out.println("Unknown host: kq6py");
+                        System.exit(1);
+                      } catch  (IOException e) {
+                        System.out.println("No I/O");
+                        System.exit(1);
+                      }
                     
             }
             else {
