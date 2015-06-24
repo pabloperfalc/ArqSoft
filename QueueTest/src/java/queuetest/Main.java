@@ -6,7 +6,11 @@
 package queuetest;
 
 import DTOs.QueueCommand;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -18,7 +22,6 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 
 /**
  *
@@ -35,10 +38,17 @@ public class Main {
      */
     public static void main(String[] args) throws JMSException {
         // TODO code application logic here
-        QueueCommand command = new QueueCommand();
+/*System.out.print("Enter something:");
+String input = System.console().readLine();
+System.out.print(input);
+ input = System.console().readLine();*/
+        
+        
+        /*QueueCommand command = new QueueCommand();
         command.setCommandId(123);
         command.setRoomId(567);
-        sendJMSMessageToCommandsQueue(command);
+        sendJMSMessageToCommandsQueue(command);*/
+        listenSocket();
     }
 
     private static Message createJMSMessageForjmsCommandsQueue(Session session, Object messageData) throws JMSException {
@@ -71,5 +81,22 @@ public class Main {
             }
         }
     }
+    
+    
+public static void listenSocket(){
+//Create socket connection
+   try{
+     Socket socket = new Socket("localhost", 5555);
+     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+     out.println("test");
+     //in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+   } catch (UnknownHostException e) {
+     System.out.println("Unknown host: kq6py");
+     System.exit(1);
+   } catch  (IOException e) {
+     System.out.println("No I/O");
+     System.exit(1);
+   }
+}
     
 }
