@@ -6,6 +6,7 @@
 package com.ArqSoft.persistencia;
 
 import Entities.Command;
+import Entities.User;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -17,4 +18,5 @@ import javax.ejb.Remote;
 public interface IRemotePersistence {
      public List<Command> getCommandList(int room);
      //public void setCommandToRoom(int idRoom,int idCommand);
+     public User SearchByName(String name);
 }

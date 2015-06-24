@@ -6,7 +6,9 @@
 package com.ArqSoft.Persistence;
 
 import Entities.Command;
+import Entities.User;
 import com.ArqSoft.Entities.CommandEntity;
+import com.ArqSoft.Entities.UserEntity;
 import com.ArqSoft.persistencia.IRemotePersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,4 +55,12 @@ public class PersistenceSb implements IRemotePersistence {
     CommandEntity command = (CommandEntity) em.createNativeQuery("select * from arqsoft.commandentity where id ="+idCommand, CommandEntity.class).getSingleResult();
     return command;
     }*/
+
+    @Override
+    public User SearchByName(String name) {
+        UserEntity userAux = (UserEntity)em.createNativeQuery("select * from arqsoft.userentity where username="+name,UserEntity.class).getSingleResult();
+        User userRet = new User(userAux.getName(), userAux.getPassword());        
+        userRet.setId(userAux.getId());        
+        return userRet;
+    }
 }

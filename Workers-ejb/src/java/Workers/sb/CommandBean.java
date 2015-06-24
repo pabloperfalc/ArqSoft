@@ -30,7 +30,7 @@ public class CommandBean implements ICommandBeanRemote {
         List<Command> lista = new ArrayList<>();
         try {
             InitialContext ctx = new InitialContext();
-            IRemotePersistence per = (IRemotePersistence) ctx.lookup("java:global/ArqSoft/Persistence/PersistenceSB");
+            IRemotePersistence per = (IRemotePersistence) ctx.lookup("java:global/ArqSoft/Persistence/PersistenceSb");
             lista = per.getCommandList(room);
         } catch (NamingException ex) {
            // Logger.getLogger(ProyectoSB.class.getName()).log(Level.SEVERE, null, ex);

@@ -7,11 +7,8 @@ package ClientSource.Resources;
 
 import Entities.Command;
 import Workers.sb.ICommandBeanRemote;
-import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.jws.WebService;
-import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -61,3 +58,23 @@ public class CommandResource {
       }
     }
     
+
+//AGREGAR ACA UNO IGUAL AL COMMANDRESOURCE QUE SE LLAME SESSIONRESOURCE
+/* El codigo seria este::::
+
+
+ @EJB
+    private LoginSb login;   
+    
+    public ServiciosSesion() {
+    }
+    
+    
+    
+    @POST
+    @Path("login")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public String IniciarSesion(Usuario u)  {         
+        return login.Login(u);        
+    }  */
