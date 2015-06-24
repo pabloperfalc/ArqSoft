@@ -106,24 +106,3 @@ public class CommandResource {
         }
         }
     }
-    
-
-//AGREGAR ACA UNO IGUAL AL COMMANDRESOURCE QUE SE LLAME SESSIONRESOURCE
-/* El codigo seria este::::
-
-
- @EJB
-    private LoginSb login;   
-    
-    public ServiciosSesion() {
-    }
-    
-    
-    
-    @POST
-    @Path("login")
-    @Consumes("application/json")
-    @Produces("application/json")
-    public String IniciarSesion(Usuario u)  {         
-        return login.Login(u);        
-    }  */

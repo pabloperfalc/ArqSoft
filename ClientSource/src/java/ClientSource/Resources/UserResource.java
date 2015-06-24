@@ -9,6 +9,7 @@ import Entities.User;
 import com.ArqSoft.Login.LoginSb;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.faces.bean.RequestScoped;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -25,7 +26,7 @@ import javax.ws.rs.Path;
  * @author cauito
  */
 @Path("user")
-@Stateless
+@RequestScoped
 public class UserResource {
 
     @EJB
@@ -37,7 +38,7 @@ public class UserResource {
     public UserResource() {
     }
 
-     @POST
+    @POST
     @Path("iniciarSesion")
     @Consumes("application/json")
     @Produces("application/json")
