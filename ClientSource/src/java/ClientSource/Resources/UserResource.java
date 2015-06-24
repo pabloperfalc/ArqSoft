@@ -44,4 +44,12 @@ public class UserResource {
     public String IniciarSesion(User u)  {         
         return login.Login(u);
     }
+    
+    @GET
+    @Path("test")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public String test()  {         
+        return "ANDUVO WEB SERVICE";
+    }
 }
