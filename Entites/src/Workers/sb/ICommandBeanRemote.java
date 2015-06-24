@@ -17,5 +17,5 @@ import javax.ejb.Remote;
 public interface ICommandBeanRemote {
     
     List<Command> getCommandList(int room);
-    
+    void setCommand(int idRoom, int idCommand);
 }

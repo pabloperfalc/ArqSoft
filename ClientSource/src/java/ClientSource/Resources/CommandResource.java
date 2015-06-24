@@ -14,6 +14,7 @@ import javax.jws.WebService;
 import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -41,18 +42,22 @@ public class CommandResource {
     public List<Command> get(int room) {
         List<Command> commands = this.commandBean.getCommandList(room);
        /*ACA SE TENDRIAN USAR DTOS*/
-        List<Command> dtos = new LinkedList<Command>();
+       // List<Command> dtos = new LinkedList<>();
        /* for (Command comm : commands) {
             dtos.add(this.commandMapper.toDTO(auto));
-        }*/
-        
-        return dtos;
+        }*/        
+        return commands;
     }
-    /*@GET
+    
+    @POST
     @Produces("application/json")
-    public String get(){
-        
-        return "ANDUVOOOOO";
-    }*/
+    public void set(int idRoom, int idCommand) {
+        this.commandBean.setCommand(idRoom, idCommand);
+       /*ACA SE TENDRIAN USAR DTOS*/
+       // List<Command> dtos = new LinkedList<>();
+       /* for (Command comm : commands) {
+            dtos.add(this.commandMapper.toDTO(auto));
+        }*/        
+      }
     }
     

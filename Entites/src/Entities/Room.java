@@ -34,21 +34,18 @@ import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
  *
  * @author cauito
  */
-@Entity
+
 public class Room implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
+    
     private Long id;
 
-    @OneToMany
     private List<Command> commandList = new ArrayList<>();
 
     
     
     public Room() {
-        //EntityManager em = new EntityManagerImpl("sesion");
-        //em.persist(room);
+       
     }  
     
     public List<Command> getCommandList() {

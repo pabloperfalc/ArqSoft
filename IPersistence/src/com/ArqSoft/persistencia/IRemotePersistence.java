@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Workers.sb;
+package com.ArqSoft.persistencia;
 
+import Entities.Command;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -12,6 +14,7 @@ import javax.ejb.Remote;
  * @author cauito
  */
 @Remote
-public interface CommandBeanRemote {
-    
+public interface IRemotePersistence {
+     public List<Command> getCommandList(int room);
+     //public void setCommandToRoom(int idRoom,int idCommand);
 }

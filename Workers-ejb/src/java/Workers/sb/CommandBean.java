@@ -6,6 +6,7 @@
 package Workers.sb;
 
 import Entities.Command;
+import com.ArqSoft.persistencia.IRemotePersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -26,15 +27,21 @@ public class CommandBean implements ICommandBeanRemote {
 
     @Override
     public List<Command> getCommandList(int room) {
-        List<Command> lista = new ArrayList<Command>();
+        List<Command> lista = new ArrayList<>();
         try {
             InitialContext ctx = new InitialContext();
-            //PersistenciaRemote per = (PersistenciaRemote) ctx.lookup("java:global/WorkFromHome/Persistencia-ejb/PersistenciaSB");
-            //lista = per.getCommandList();
+            IRemotePersistence per = (IRemotePersistence) ctx.lookup("java:global/ArqSoft/Persistence/PersistenceSB");
+            lista = per.getCommandList(room);
         } catch (NamingException ex) {
            // Logger.getLogger(ProyectoSB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
+    }
+
+    @Override
+    public void setCommand(int idRoom, int idCommand) {
+        
+            
     }
     
     
