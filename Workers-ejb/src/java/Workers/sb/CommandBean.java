@@ -39,7 +39,7 @@ public class CommandBean implements ICommandBeanRemote {
     }
 
     @Override
-    public void setCommand(int idRoom, int idCommand) {
+    public void sendCommand(int idRoom, int idCommand) {
         
             
     }
