@@ -52,7 +52,7 @@ public class CommandResource {
     @POST
     @Produces("application/json")
     public void set(int idRoom, int idCommand) {
-        this.commandBean.setCommand(idRoom, idCommand);
+        this.commandBean.sendCommand(idRoom, idCommand);
        /*ACA SE TENDRIAN USAR DTOS*/
        // List<Command> dtos = new LinkedList<>();
        /* for (Command comm : commands) {
