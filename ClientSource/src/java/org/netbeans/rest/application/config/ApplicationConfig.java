@@ -29,8 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ClientSource.Resources.CommandResource.class);
-        resources.add(ClientSource.Resources.UserSessionResource.class);
+        resources.add(com.ArqSoft.ClientSource.Resources.CommandResource.class);
+        resources.add(com.ArqSoft.ClientSource.Resources.UserSessionResource.class);
     }
     
 }

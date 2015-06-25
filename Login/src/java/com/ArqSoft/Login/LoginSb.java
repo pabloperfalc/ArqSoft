@@ -8,7 +8,6 @@ package com.ArqSoft.Login;
 import com.ArqSoft.DTOs.User;
 import com.ArqSoft.Persistence.PersistenceSb;
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 

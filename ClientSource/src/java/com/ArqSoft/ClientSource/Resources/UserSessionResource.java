@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClientSource.Resources;
+package com.ArqSoft.ClientSource.Resources;
 
 import com.ArqSoft.DTOs.User;
 import com.ArqSoft.Login.LoginSb;
