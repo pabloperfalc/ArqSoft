@@ -5,8 +5,8 @@
  */
 package com.ArqSoft.Login;
 
-import Entities.User;
-import com.ArqSoft.persistencia.IRemotePersistence;
+import DTOs.User;
+import com.ArqSoft.Persistence.PersistenceSb;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.naming.InitialContext;
@@ -23,7 +23,7 @@ public class LoginSb {
     {
         try {
             InitialContext ctx = new InitialContext();
-            IRemotePersistence per = (IRemotePersistence) ctx.lookup("java:global/WorkFromHome/Persistence/PersistenceSb");    
+            PersistenceSb per = (PersistenceSb) ctx.lookup("java:global/WorkFromHome/Persistence/PersistenceSb");    
             User ret = per.SearchByName(u.getUserName());
             if(ret == null)
             {

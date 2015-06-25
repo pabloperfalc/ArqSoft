@@ -5,11 +5,10 @@
  */
 package com.ArqSoft.Persistence;
 
-import Entities.Command;
-import Entities.User;
+import DTOs.Command;
+import DTOs.User;
 import com.ArqSoft.Entities.CommandEntity;
 import com.ArqSoft.Entities.UserEntity;
-import com.ArqSoft.persistencia.IRemotePersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -22,13 +21,13 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 //@LocalBean
-public class PersistenceSb implements IRemotePersistence {
+public class PersistenceSb {
 
     @PersistenceContext
     EntityManager em;
 
-    @Override
-    public List<Entities.Command> getCommandList(int room) {
+    
+    public List<DTOs.Command> getCommandList(int room) {
         List<CommandEntity> list = (List<CommandEntity>) em.createNativeQuery("select * from arqsoft.commandentity where id ="+room, CommandEntity.class).getResultList();
         List<Command> returnList = new ArrayList<>();
         for (CommandEntity comm : list) {
@@ -56,7 +55,7 @@ public class PersistenceSb implements IRemotePersistence {
     return command;
     }*/
 
-    @Override
+    
     public User SearchByName(String name) {
         UserEntity userAux = (UserEntity)em.createNativeQuery("select * from arqsoft.userentity where username="+name,UserEntity.class).getSingleResult();
         User userRet = new User(userAux.getName(), userAux.getPassword());        

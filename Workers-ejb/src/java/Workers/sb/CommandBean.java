@@ -5,8 +5,8 @@
  */
 package Workers.sb;
 
-import Entities.Command;
-import com.ArqSoft.persistencia.IRemotePersistence;
+import DTOs.Command;
+import com.ArqSoft.Persistence.PersistenceSb;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,25 +20,25 @@ import javax.naming.NamingException;
  */
 @Stateless
 @LocalBean
-public class CommandBean implements ICommandBeanRemote {
+public class CommandBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-    @Override
+  
     public List<Command> getCommandList(int room) {
         List<Command> lista = new ArrayList<>();
         try {
             InitialContext ctx = new InitialContext();
-            IRemotePersistence per = (IRemotePersistence) ctx.lookup("java:global/ArqSoft/Persistence/PersistenceSb");
-            lista = per.getCommandList(room);
+            PersistenceSb per = (PersistenceSb) ctx.lookup("java:global/ArqSoft/Persistence/PersistenceSb");
+            //lista = per.getCommandList(room);
         } catch (NamingException ex) {
            // Logger.getLogger(ProyectoSB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
     }
 
-    @Override
+
     public void sendCommand(int idRoom, int idCommand) {
         
             

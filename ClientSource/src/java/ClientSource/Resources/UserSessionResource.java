@@ -5,29 +5,29 @@
  */
 package ClientSource.Resources;
 
-import Entities.User;
+import DTOs.User;
 import com.ArqSoft.Login.LoginSb;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.faces.bean.RequestScoped;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-
+import javax.ws.rs.PUT;
 
 /**
  * REST Web Service
  *
  * @author cauito
  */
-@Path("user")
-@RequestScoped
-public class UserResource {
+@Path("userSession")
+public class UserSessionResource {
+
+    @Context
+    private UriInfo context;
 
     @EJB
     private LoginSb login;   
@@ -35,7 +35,7 @@ public class UserResource {
     /**
      * Creates a new instance of UserResource
      */
-    public UserResource() {
+    public UserSessionResource() {
     }
 
     @POST
@@ -52,5 +52,5 @@ public class UserResource {
     @Produces("application/json")
     public String test()  {         
         return "ANDUVO WEB SERVICE";
-    }
+    }   
 }

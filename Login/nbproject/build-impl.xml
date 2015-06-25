@@ -781,19 +781,17 @@ exists or setup the property manually. For example like this:
                 COMPILATION SECTION
             -->
     <target depends="init" if="no.dist.ear.dir" name="-deps-module-jar" unless="no.deps">
-        <ant antfile="${project.Entities}/build.xml" inheritall="false" target="jar">
+        <ant antfile="${project.DTOs}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
-        <ant antfile="${project.IPersistence}/build.xml" inheritall="false" target="jar">
-            <property name="deploy.on.save" value="false"/>
-        </ant>
+        <ant antfile="${project.Persistence}/build.xml" inheritall="false" target="dist"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-deps-ear-jar" unless="no.deps">
-        <ant antfile="${project.Entities}/build.xml" inheritall="false" target="jar">
+        <ant antfile="${project.DTOs}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
-        <ant antfile="${project.IPersistence}/build.xml" inheritall="false" target="jar">
-            <property name="deploy.on.save" value="false"/>
+        <ant antfile="${project.Persistence}/build.xml" inheritall="false" target="dist-ear">
+            <property location="${build.dir}" name="dist.ear.dir"/>
         </ant>
     </target>
     <target depends="init, -deps-module-jar, -deps-ear-jar" name="deps-jar"/>
@@ -807,21 +805,21 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="compile,-library-inclusion-in-archive-weblogic,-library-inclusion-in-archive-by-user" name="library-inclusion-in-archive"/>
     <target if="is.jars.in.ejbjar" name="-library-inclusion-in-archive-by-user">
-        <copyfiles files="${reference.IPersistence.jar}" todir="${build.classes.dir}"/>
-        <copyfiles files="${reference.Entities.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${reference.DTOs.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${reference.Persistence.dist}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
-        <basename file="${reference.IPersistence.jar}" property="manifest.reference.IPersistence.jar"/>
-        <basename file="${reference.Entities.jar}" property="manifest.reference.Entities.jar"/>
+        <basename file="${reference.DTOs.jar}" property="manifest.reference.DTOs.jar"/>
+        <basename file="${reference.Persistence.dist}" property="manifest.reference.Persistence.dist"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
             <attribute name="Extension-List" value="jar-1 jar-2 "/>
-            <attribute name="jar-1-Extension-Name" value="${manifest.reference.IPersistence.jar}"/>
-            <attribute name="jar-2-Extension-Name" value="${manifest.reference.Entities.jar}"/>
+            <attribute name="jar-1-Extension-Name" value="${manifest.reference.DTOs.jar}"/>
+            <attribute name="jar-2-Extension-Name" value="${manifest.reference.Persistence.dist}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
-        <copyfiles files="${reference.IPersistence.jar}" todir="${dist.ear.dir}/lib"/>
-        <copyfiles files="${reference.Entities.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${reference.DTOs.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${reference.Persistence.dist}" todir="${dist.ear.dir}"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target name="-copy-meta-inf">
@@ -1205,8 +1203,8 @@ exists or setup the property manually. For example like this:
                 CLEANUP SECTION
             -->
     <target depends="init" name="deps-clean" unless="no.deps">
-        <ant antfile="${project.Entities}/build.xml" inheritall="false" target="clean"/>
-        <ant antfile="${project.IPersistence}/build.xml" inheritall="false" target="clean"/>
+        <ant antfile="${project.DTOs}/build.xml" inheritall="false" target="clean"/>
+        <ant antfile="${project.Persistence}/build.xml" inheritall="false" target="clean"/>
     </target>
     <target depends="init" name="-do-clean">
         <delete dir="${build.dir}"/>

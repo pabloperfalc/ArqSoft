@@ -6,8 +6,7 @@
 package ClientSource.Resources;
 
 import DTOs.QueueCommand;
-import Entities.Command;
-import Workers.sb.ICommandBeanRemote;
+import DTOs.Command;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Resource;
@@ -43,8 +42,8 @@ public class CommandResource {
     private static ConnectionFactory commandsQueueFactory;
     
 
-    @EJB
-    private ICommandBeanRemote commandBean;
+    /*@EJB
+    private ICommandBeanRemote commandBean;*/
     
     //@EJB
     //private CommandMapper commandMapper;
@@ -52,14 +51,14 @@ public class CommandResource {
     
     @GET
     @Produces("application/json")
-    public List<Command> get(int room) {
-        List<Command> commands = this.commandBean.getCommandList(room);
+    public /*List<Command>*/void get(int room) {
+       // List<Command> commands = this.commandBean.getCommandList(room);
        /*ACA SE TENDRIAN USAR DTOS*/
        // List<Command> dtos = new LinkedList<>();
        /* for (Command comm : commands) {
             dtos.add(this.commandMapper.toDTO(auto));
         }*/        
-        return commands;
+       // return commands;
     }
     
     @POST
