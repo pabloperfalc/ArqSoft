@@ -8,15 +8,14 @@ package ClientSource.Resources;
 import DTOs.User;
 import com.ArqSoft.Login.LoginSb;
 import javax.ejb.EJB;
+import javax.faces.bean.RequestScoped;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 
 /**
  * REST Web Service
@@ -24,6 +23,7 @@ import javax.ws.rs.PUT;
  * @author cauito
  */
 @Path("userSession")
+@RequestScoped
 public class UserSessionResource {
 
     @Context
@@ -32,11 +32,7 @@ public class UserSessionResource {
     @EJB
     private LoginSb login;   
 
-    /**
-     * Creates a new instance of UserResource
-     */
-    public UserSessionResource() {
-    }
+   
 
     @POST
     @Path("iniciarSesion")

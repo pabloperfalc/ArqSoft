@@ -16,11 +16,14 @@ public class Client {
     private static String userName;
     private static String password;
     public static void main(String[] args) {
+        
         Scanner s = new Scanner(System.in);
         System.out.println("Ingrese nombre de usuario");
         userName = s.nextLine();
         System.out.println("Ingrese contraseña");
         password = s.nextLine();
+        
+        String uri ="http://localhost:8080/ClientSource/webresources/commands";
         
         
     }

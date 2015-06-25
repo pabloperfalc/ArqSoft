@@ -6,11 +6,8 @@
 package ClientSource.Resources;
 
 import DTOs.QueueCommand;
-import DTOs.Command;
 import java.io.Serializable;
-import java.util.List;
 import javax.annotation.Resource;
-import javax.ejb.EJB;
 import javax.faces.bean.RequestScoped;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
