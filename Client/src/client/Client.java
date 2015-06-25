@@ -7,17 +7,10 @@ package client;
 
 import DTOs.User;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -52,9 +45,10 @@ public class Client {
         URL url = new URL(uri);
         HttpURLConnection connection =(HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
-        
         connection.setRequestProperty("Accept", "application/json");
         
+      
+       
         String res = "";
         String line;
        
