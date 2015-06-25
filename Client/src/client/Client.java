@@ -5,8 +5,10 @@
  */
 package client;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,36 +29,31 @@ public class Client {
     public static void main(String[] args){
         
         Scanner s = new Scanner(System.in);
+        BufferedReader br;
+        
         System.out.println("Ingrese nombre de usuario");
         userName = s.nextLine();
         System.out.println("Ingrese contraseña");
         password = s.nextLine();
         
-        try{
+       try{
         String uri ="http://localhost:8080/ClientSource/webresources/userSession/test";
         URL url = new URL(uri);
         HttpURLConnection connection =(HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Accept", "application/json");
         
+        String res = "";
+        String line;
        
-        
-       String res = connection.getContent().toString();
-        JAXBContext jc = JAXBContext.newInstance(String.class);
-        
-        //InputStream result = connection.getInputStream();
-        String o = res;
-        //System.out.println(res);
-        
-
-
-        
-        
-    }   catch (IOException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JAXBException ex) {
-            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+        br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+         while ((line = br.readLine()) != null) {
+            res += line;
+         }
+      
+       
+        System.out.println(res);  
+        //PONER LAS DISTINTAS EXCEPTIONS
+       }catch(Exception e){}
 }
 }
