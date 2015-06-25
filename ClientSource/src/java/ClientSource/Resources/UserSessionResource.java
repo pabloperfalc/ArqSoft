@@ -25,10 +25,8 @@ import javax.ws.rs.Path;
 @Path("userSession")
 @RequestScoped
 public class UserSessionResource {
-
     @Context
     private UriInfo context;
-
     @EJB
     private LoginSb login;   
 
