@@ -5,7 +5,7 @@
  */
 package com.ArqSoft.Login;
 
-import DTOs.User;
+import com.ArqSoft.DTOs.User;
 import com.ArqSoft.Persistence.PersistenceSb;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;

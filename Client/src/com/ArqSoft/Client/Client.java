@@ -5,7 +5,7 @@
  */
 package com.ArqSoft.Client;
 
-import DTOs.User;
+import com.ArqSoft.DTOs.User;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

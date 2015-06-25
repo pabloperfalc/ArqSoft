@@ -5,7 +5,7 @@
  */
 package com.ArqSoft.Workers.sb;
 
-import DTOs.Command;
+import com.ArqSoft.DTOs.Command;
 import com.ArqSoft.Persistence.PersistenceSb;
 import java.util.ArrayList;
 import java.util.List;

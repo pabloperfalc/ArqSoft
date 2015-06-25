@@ -3,38 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DTOs;
+package com.ArqSoft.DTOs;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
  * @author cauito
  */
-
-public class Room implements Serializable {
-    
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     
     private Long id;
 
-    private List<Command> commandList = new ArrayList<>();
+    private String userName;
+    private String password;
 
-    
-    
-    public Room() {
-       
-    }  
-    
-    public List<Command> getCommandList() {
-        return commandList;
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
     }
 
-    public void setCommandList(List<Command> commandList) {
-        this.commandList = commandList;
+    public String getUserName() {
+        return userName;
     }
-    
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
     public Long getId() {
         return id;
     }
@@ -53,10 +59,10 @@ public class Room implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Room)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        Room other = (Room) object;
+        User other = (User) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -65,11 +71,7 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        String commands = "";
-        for(Command c: commandList){
-        commands = commands + c + "\n";
-    }
-        return "Habitación " + id + " Comandos: " + commands;
+        return "Entities.User[ id=" + id + " ]";
     }
     
 }

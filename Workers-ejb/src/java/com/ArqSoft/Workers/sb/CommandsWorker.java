@@ -5,7 +5,7 @@
  */
 package com.ArqSoft.Workers.sb;
 
-import DTOs.QueueCommand;
+import com.ArqSoft.DTOs.QueueCommand;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;

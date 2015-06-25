@@ -5,8 +5,8 @@
  */
 package com.ArqSoft.persistencia;
 
-import DTOs.Command;
-import DTOs.User;
+import com.ArqSoft.DTOs.Command;
+import com.ArqSoft.DTOs.User;
 import java.util.List;
 import javax.ejb.Remote;
 

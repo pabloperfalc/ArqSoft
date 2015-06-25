@@ -5,7 +5,7 @@
  */
 package ClientSource.Resources;
 
-import DTOs.User;
+import com.ArqSoft.DTOs.User;
 import com.ArqSoft.Login.LoginSb;
 import javax.ejb.EJB;
 import javax.faces.bean.RequestScoped;

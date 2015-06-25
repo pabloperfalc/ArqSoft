@@ -5,7 +5,7 @@
  */
 package ClientSource.Resources;
 
-import DTOs.QueueCommand;
+import com.ArqSoft.DTOs.QueueCommand;
 import java.io.Serializable;
 import javax.annotation.Resource;
 import javax.faces.bean.RequestScoped;

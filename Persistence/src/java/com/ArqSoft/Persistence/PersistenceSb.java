@@ -5,8 +5,8 @@
  */
 package com.ArqSoft.Persistence;
 
-import DTOs.Command;
-import DTOs.User;
+import com.ArqSoft.DTOs.Command;
+import com.ArqSoft.DTOs.User;
 import com.ArqSoft.Entities.CommandEntity;
 import com.ArqSoft.Entities.UserEntity;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class PersistenceSb {
     EntityManager em;
 
     
-    public List<DTOs.Command> getCommandList(int room) {
+    public List<com.ArqSoft.DTOs.Command> getCommandList(int room) {
         List<CommandEntity> list = (List<CommandEntity>) em.createNativeQuery("select * from arqsoft.commandentity where id ="+room, CommandEntity.class).getResultList();
         List<Command> returnList = new ArrayList<>();
         for (CommandEntity comm : list) {

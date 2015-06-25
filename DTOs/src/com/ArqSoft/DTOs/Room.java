@@ -3,44 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DTOs;
+package com.ArqSoft.DTOs;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author cauito
  */
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+
+public class Room implements Serializable {
+    
     
     private Long id;
 
-    private String userName;
-    private String password;
+    private List<Command> commandList = new ArrayList<>();
 
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
+    
+    
+    public Room() {
+       
+    }  
+    
+    public List<Command> getCommandList() {
+        return commandList;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setCommandList(List<Command> commandList) {
+        this.commandList = commandList;
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-        
+    
     public Long getId() {
         return id;
     }
@@ -59,10 +53,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Room)) {
             return false;
         }
-        User other = (User) object;
+        Room other = (Room) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +65,11 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.User[ id=" + id + " ]";
+        String commands = "";
+        for(Command c: commandList){
+        commands = commands + c + "\n";
+    }
+        return "Habitación " + id + " Comandos: " + commands;
     }
     
 }

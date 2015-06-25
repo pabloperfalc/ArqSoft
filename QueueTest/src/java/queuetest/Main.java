@@ -5,7 +5,7 @@
  */
 package queuetest;
 
-import DTOs.QueueCommand;
+import com.ArqSoft.DTOs.QueueCommand;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
