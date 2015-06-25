@@ -5,6 +5,7 @@
  */
 package client;
 
+import DTOs.User;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,21 +27,32 @@ public class Client {
 
     private static String userName;
     private static String password;
+    
+    private static BufferedReader br;
     public static void main(String[] args){
         
         Scanner s = new Scanner(System.in);
-        BufferedReader br;
+        
         
         System.out.println("Ingrese nombre de usuario");
         userName = s.nextLine();
         System.out.println("Ingrese contraseña");
         password = s.nextLine();
         
-       try{
+        Client.LogIn(userName, password);
+        
+      
+}
+    
+    private static void LogIn(String userName, String password){
+        
+        User userAux = new User(userName, password);
+     try{
         String uri ="http://localhost:8080/ClientSource/webresources/userSession/test";
         URL url = new URL(uri);
         HttpURLConnection connection =(HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+        connection.setRequestMethod("POST");
+        
         connection.setRequestProperty("Accept", "application/json");
         
         String res = "";
@@ -55,5 +67,7 @@ public class Client {
         System.out.println(res);  
         //PONER LAS DISTINTAS EXCEPTIONS
        }catch(Exception e){}
-}
+    
+    
+    }
 }

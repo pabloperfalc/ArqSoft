@@ -38,7 +38,7 @@ public class LoginSb {
             //Logger.getLogger(LoginSB.class.getName()).log(Level.SEVERE, null, ex);
             return "nada";
         }
-        return null;
+        return "Usuario conectado exitosamente";
     }
        
 }
