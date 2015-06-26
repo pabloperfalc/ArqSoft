@@ -22,6 +22,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -62,19 +63,12 @@ public class CommandResource {
     
     @POST
     @Produces("application/json")
-    @Consumes("application/x-www-form-urlencoded")
-    public void set(@FormParam("idCommand") int idCommand, @FormParam("idRoom") int idRoom) {
-    //public void set(int idCommand){
-        //this.commandBean.sendCommand(idRoom, idCommand);
-       /*ACA SE TENDRIAN USAR DTOS*/
-       // List<Command> dtos = new LinkedList<>();
-       /* for (Command comm : commands) {
-            dtos.add(this.commandMapper.toDTO(auto));
-        }*/    
+    @Path("/create/{idCommand}/{idRoom}")
+    public void set(@PathParam("idCommand") int idCommand, @PathParam("idRoom") int idRoom) {
         try{       
         QueueCommand command = new QueueCommand();
         command.setCommandId(idCommand);
-       // command.setRoomId(idRoom);
+        command.setRoomId(idRoom);
         sendJMSMessageToCommandsQueue(command);
         }catch(JMSException e){
                 }
