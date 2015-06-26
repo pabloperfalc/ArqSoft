@@ -17,6 +17,8 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -60,7 +62,9 @@ public class CommandResource {
     
     @POST
     @Produces("application/json")
-    public void set(/*int idRoom, */int idCommand){
+    @Consumes("application/x-www-form-urlencoded")
+    public void set(@FormParam("idCommand") int idCommand, @FormParam("idRoom") int idRoom) {
+    //public void set(int idCommand){
         //this.commandBean.sendCommand(idRoom, idCommand);
        /*ACA SE TENDRIAN USAR DTOS*/
        // List<Command> dtos = new LinkedList<>();
