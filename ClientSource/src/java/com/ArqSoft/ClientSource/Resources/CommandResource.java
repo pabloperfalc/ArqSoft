@@ -5,8 +5,11 @@
  */
 package com.ArqSoft.ClientSource.Resources;
 
+import com.ArqSoft.DTOs.Command;
 import com.ArqSoft.DTOs.QueueCommand;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.RequestScoped;
 import javax.jms.Connection;
@@ -51,14 +54,14 @@ public class CommandResource {
     
     @GET
     @Produces("application/json")
-    public /*List<Command>*/void get(int room) {
-       // List<Command> commands = this.commandBean.getCommandList(room);
+    public List<Command> get(int room) {
+       List<Command> commands = new LinkedList<Command>();
        /*ACA SE TENDRIAN USAR DTOS*/
        // List<Command> dtos = new LinkedList<>();
        /* for (Command comm : commands) {
             dtos.add(this.commandMapper.toDTO(auto));
         }*/        
-       // return commands;
+       return commands;
     }
     
     @POST
